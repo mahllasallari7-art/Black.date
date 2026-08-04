@@ -823,41 +823,24 @@ color:white;
 
 }
 
-function confirmDate(){
-
-fetch("https://script.google.com/macros/s/AKfycbyC8iNDuTp_NWPh2P01qJodtmMuKZX785S5Ch8sKfWNAGR0qUuhgxtPsTHBvQ56hJHO/exec", {
-
-method:"POST",
-
-body:JSON.stringify({
-
-date:selectedDate,
-
-time:selectedTime,
-
-food:selectedFood
-
-})
-
-});
-
-
-document.getElementById("page").innerHTML=
-
-`
-
-<h1 style="color:#8b1648">
-
-ثبت شد ❤️‍🔥
-
-</h1>
-
-<p>
-منتظر باش، قرارمون ثبت شد 💗
-</p>
-
-`;
-
+async function confirmDate(){
+  await fetch("https://script.google.com/macros/s/AKfycbyC8iNDuTp_NWPh2P01qJodtmMuKZX785S5Ch8sKfWNAGR0qUuhgxtPsTHBvQ56hJHO/exec", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      date:selectedDate,
+      time:selectedTime,
+      food:selectedFood
+    })
+  });
+  document.getElementById("page").innerHTML = `
+    <div class="card final-card">
+      <h1 style="color:#8b1648">ثبت شد ❤️‍🔥</h1>
+      <p>منتظر باش، قرارمون ثبت شد 💗</p>
+    </div>
+  `;
 }
 function lastLove(){
 
