@@ -582,28 +582,28 @@ document.getElementById("page").innerHTML=
 <div class="foods">
 
 
-<div class="food" onclick="chooseFood('همبرگور 🍔')">
+<div class="food" onclick="chooseFood('همبرگور 🍔',this)">
 
 همبرگور 🍔
 
 </div>
 
 
-<div class="food" onclick="chooseFood('جیگر 🍢')">
+<div class="food" onclick="chooseFood('جیگر 🍢',this)">
 
 جیگر 🍢
 
 </div>
 
 
-<div class="food" onclick="chooseFood('پیتزا 🍕')">
+<div class="food" onclick="chooseFood('پیتزا 🍕',this)">
 
 پیتزا 🍕
 
 </div>
 
 
-<div class="food" onclick="chooseFood('قهوه ☕')">
+<div class="food" onclick="chooseFood('قهوه ☕',this)">
 
 قهوه ☕
 
@@ -619,10 +619,11 @@ document.getElementById("page").innerHTML=
 
 
 
-function chooseFood(food){
+function chooseFood(food, element){
 
 
-selectedFood=food;
+selectedFood = food;
+
 
 
 document.querySelectorAll(".food")
@@ -633,10 +634,13 @@ x.classList.remove("active");
 });
 
 
-event.currentTarget.classList.add("active");
+
+element.classList.add("active");
+
 
 
 heartPop("💖");
+
 
 
 setTimeout(()=>{
@@ -644,6 +648,7 @@ setTimeout(()=>{
 finalPage();
 
 },1800);
+
 
 
 }
