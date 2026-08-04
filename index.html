@@ -648,9 +648,6 @@ font-size:17px;
 
 function confirmDate(){
 
-const botToken = "8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY";
-const chatId = "7986361059";
-
 const message = `
 ❤️‍🔥 قرار جدید
 
@@ -661,40 +658,16 @@ const message = `
 🍽️ غذا: ${selectedFood}
 `;
 
-fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-chat_id: chatId,
-text: message
-})
-
+fetch(`https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY/sendMessage`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    chat_id: "7986361059",
+    text: message
+  })
 });
-
-burst("❤️‍🔥");
-
-document.getElementById("card").innerHTML=`
-
-<h1 style="color:#8f1645">
-ثبت شد ❤️‍🔥
-</h1>
-
-<p class="mainText">
-قرارمون ثبت شد 💗
-</p>
-
-<button onclick="story()">
-داستانمون 🥀
-</button>
-
-`;
-
-}
 
 function story(){
 
