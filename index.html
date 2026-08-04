@@ -937,21 +937,51 @@ border-radius:30px;
 
 function sendTelegram(){
 
-const message = `
-❤️‍🔥 قرار جدید
+const data = {
+date: selectedDate,
+time: selectedTime,
+food: selectedFood
+};
 
-📅 تاریخ: ${selectedDate}
 
-⏰ ساعت: ${selectedTime}
+fetch("https://script.google.com/macros/s/AKfycbzVc9tDopxItZtdh6ynzTEor73eH--Y9x6Iq6ax24ZMtrOQZj3F9QlZxDs0h59KGx11/exec", {
 
-🍽️ غذا: ${selectedFood}
+method:"POST",
+
+body: JSON.stringify(data)
+
+})
+
+
+.then(()=>{
+
+document.getElementById("page").innerHTML=
+
+`
+
+<h1 style="color:#8b1648">
+
+قرار ثبت شد ❤️‍🔥
+
+</h1>
+
+<p style="color:#8b1648">
+
+منتظر دیدنت میمونم 🫂
+
+</p>
+
 `;
 
-const url =
-"https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY/sendMessage?chat_id=7986361059&text="
-+ encodeURIComponent(message);
+})
 
-window.location.href = url;
+
+.catch(()=>{
+
+alert("خطا در ثبت قرار ❌");
+
+});
+
 
 }
 </script>
