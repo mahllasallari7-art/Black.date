@@ -847,11 +847,9 @@ Math.floor(Math.random()*hearts.length)
 ];
 
 
-
 h.style.left="50%";
 
 h.style.top="50%";
-
 
 
 h.style.setProperty(
@@ -864,7 +862,6 @@ h.style.setProperty(
 "--y",
 (Math.random()*1000-500)+"px"
 );
-
 
 
 document.body.appendChild(h);
@@ -895,9 +892,7 @@ font-size:26px;
 color:#8b1648;
 ">
 
-
 💗
-
 
 </h1>
 
@@ -908,15 +903,27 @@ color:#8b1648;
 font-weight:bold;
 ">
 
-
 حیف داستانمون بود که انقدر بی سرو ته تموم شه
-
 
 </p>
 
 
-`;
+<button 
+onclick="sendTelegram()"
+style="
+font-size:18px;
+background:#951c50;
+color:white;
+padding:12px 25px;
+border-radius:30px;
+">
 
+ثبت قرار ❤️‍🔥
+
+</button>
+
+
+`;
 
 
 },1800);
@@ -924,6 +931,8 @@ font-weight:bold;
 
 
 }
+
+
 
 
 function sendTelegram(){
@@ -943,18 +952,15 @@ fetch("https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7Bzg7XYwA9iyEYzo
 .then(res => res.json())
 
 .then(data => {
+
 alert(JSON.stringify(data));
+
 })
 
 .catch(err => {
+
 alert("خطا: " + err);
+
 });
 
 }
-
-</script>
-
-
-</body>
-
-</html>
