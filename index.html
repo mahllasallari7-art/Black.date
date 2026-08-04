@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>یک قرار خاص 💗</title>
+<title>Black Date ❤️</title>
+
 
 <style>
 
@@ -21,19 +22,43 @@ margin:0;
 min-height:100vh;
 
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 
-font-family:tahoma;
-
-background:
-linear-gradient(
-135deg,
-#8b003f,
-#350019
-);
+font-family:tahoma, sans-serif;
 
 overflow:hidden;
+
+background:
+linear-gradient(135deg,#b84b70,#f2b6c8,#8d2148);
+
+}
+
+
+
+.bgEmoji{
+
+position:fixed;
+
+font-size:35px;
+
+opacity:.45;
+
+animation:move 10s linear infinite;
+
+}
+
+
+
+@keyframes move{
+
+0%{
+transform:translateY(110vh) rotate(0deg);
+}
+
+100%{
+transform:translateY(-20vh) rotate(360deg);
+}
 
 }
 
@@ -44,20 +69,19 @@ overflow:hidden;
 width:90%;
 max-width:430px;
 
-background:rgba(255,255,255,.88);
-
-padding:35px;
+background:rgba(255,255,255,.85);
 
 border-radius:35px;
 
+padding:35px;
+
 text-align:center;
 
-box-shadow:
-0 20px 60px rgba(0,0,0,.35);
-
-color:#65002f;
+box-shadow:0 20px 60px rgba(100,0,40,.25);
 
 animation:show 1s;
+
+color:#7d1743;
 
 }
 
@@ -69,7 +93,7 @@ from{
 
 opacity:0;
 
-transform:translateY(40px);
+transform:scale(.8);
 
 }
 
@@ -77,7 +101,7 @@ to{
 
 opacity:1;
 
-transform:translateY(0);
+transform:scale(1);
 
 }
 
@@ -87,7 +111,9 @@ transform:translateY(0);
 
 h1{
 
-color:#a0004d;
+color:#951c50;
+
+font-size:27px;
 
 }
 
@@ -95,7 +121,7 @@ color:#a0004d;
 
 p{
 
-font-size:19px;
+font-size:18px;
 
 line-height:2;
 
@@ -109,15 +135,15 @@ border:0;
 
 border-radius:40px;
 
-padding:15px 30px;
+padding:14px 30px;
 
-margin:10px;
+margin:8px;
 
 font-size:18px;
 
 cursor:pointer;
 
-transition:.4s;
+transition:.5s;
 
 }
 
@@ -125,7 +151,7 @@ transition:.4s;
 
 #yes{
 
-background:#a0004d;
+background:#951c50;
 
 color:white;
 
@@ -135,105 +161,61 @@ color:white;
 
 #no{
 
-background:#eee;
+background:#f5dce6;
 
-color:#80003b;
-
-}
-
-
-
-button:hover{
-
-transform:scale(1.1);
+color:#951c50;
 
 }
 
 
 
-.floating{
+#hint{
+
+margin-top:15px;
+
+font-size:14px;
+
+color:#951c50;
+
+min-height:25px;
+
+}
+
+
+
+.heartPop{
 
 position:fixed;
 
-font-size:25px;
+font-size:35px;
 
-animation:float 8s linear infinite;
-
-}
-
-
-
-@keyframes float{
-
-from{
-
-transform:translateY(100vh);
-
-}
-
-to{
-
-transform:translateY(-20vh);
-
-}
-
-}
-
-
-
-.boom{
-
-position:fixed;
-
-font-size:30px;
+animation:pop 1.5s forwards;
 
 z-index:10;
 
-animation:boom 1.5s forwards;
-
 }
 
 
 
-@keyframes boom{
+@keyframes pop{
 
 0%{
 
-transform:translate(0,0) scale(.2);
+transform:scale(0);
 
 opacity:1;
 
 }
 
-
 100%{
 
-transform:translate(var(--x),var(--y)) scale(1.5);
+transform:translate(var(--x),var(--y)) scale(2);
 
 opacity:0;
 
 }
 
 }
-
-
-
-input{
-
-width:90%;
-
-padding:12px;
-
-margin:8px;
-
-border-radius:20px;
-
-border:1px solid #ddd;
-
-font-size:16px;
-
-}
-
 
 
 </style>
@@ -244,39 +226,43 @@ font-size:16px;
 <body>
 
 
-<div class="floating" style="left:15%">💗</div>
-<div class="floating" style="left:50%;animation-delay:2s">💗</div>
-<div class="floating" style="left:80%;animation-delay:4s">💗</div>
+<div class="bgEmoji" style="left:10%">💋</div>
+<div class="bgEmoji" style="left:25%;animation-delay:2s">🌶️</div>
+<div class="bgEmoji" style="left:40%;animation-delay:4s">❣️</div>
+<div class="bgEmoji" style="left:55%;animation-delay:1s">❤️‍🔥</div>
+<div class="bgEmoji" style="left:70%;animation-delay:3s">🍒</div>
+<div class="bgEmoji" style="left:85%;animation-delay:5s">🍷</div>
+<div class="bgEmoji" style="left:50%;animation-delay:6s">🥀</div>
 
 
 
-<div class="card" id="app">
+<div class="card" id="page">
 
 
 <h1>
-افرودیت زیبای من 💗
+با من میای سر قرار؟🥹
 </h1>
 
 
-<p id="text">
-
-با من میای سر یه دیت خاص؟ ✨
-
+<p>
+فقط یه سوال ساده‌ست...
+<br>
+جواب درست هم فقط یکیشه 😏
 </p>
 
 
+
 <button id="yes" onclick="yesClick()">
-
-آره 😍
-
+آره ❤️‍🔥
 </button>
 
 
 <button id="no" onclick="noClick()">
-
 نه
-
 </button>
+
+
+<div id="hint"></div>
 
 
 </div>
@@ -286,76 +272,77 @@ font-size:16px;
 <script>
 
 
-let yesSize=18;
+let yesScale=1;
 
-let noIndex=0;
+let noNumber=0;
+
 
 
 function noClick(){
 
 
-let messages=[
+let text=[
 
-"مطمئنی؟ یه بار دیگه فکر کن 💗",
+"اره منتظرته❤️‍🔥",
 
-"شاید این همون قراری باشه که بعداً خوشحالت کنه 😌",
+"زودباش دیگه اذیت نکن🌶️",
 
-"هنوز فرصت داری انتخاب قشنگ‌تری داشته باشی ✨",
-
-"فکر کنم جواب قلبت یه چیز دیگه‌ست 💗"
+"بسه مگه باهات شوخی دارم، خودتم میدونی گزینه درست کدومه 🙃"
 
 ];
 
 
-document.getElementById("text").innerHTML=
-messages[Math.min(noIndex,3)];
+document.getElementById("hint").innerHTML=
+text[Math.min(noNumber,2)];
 
 
-noIndex++;
+noNumber++;
 
 
-yesSize+=12;
+yesScale+=0.15;
 
 
-document.getElementById("yes").style.fontSize=
-yesSize+"px";
+let yes=document.getElementById("yes");
+
+yes.style.transform=
+`scale(${yesScale})`;
 
 
-document.getElementById("yes").style.transform=
-"scale(1.1)";
+yes.style.fontSize=
+(18+noNumber*3)+"px";
 
 
 }
 
 
 
-function heartBoom(){
+function heartPop(icon="💝"){
 
 
-for(let i=0;i<70;i++){
+for(let i=0;i<35;i++){
 
 
 let h=document.createElement("div");
 
+h.className="heartPop";
 
-h.className="boom";
-
-h.innerHTML="💗";
+h.innerHTML=icon;
 
 
 h.style.left="50%";
+
 h.style.top="50%";
 
 
 h.style.setProperty(
 "--x",
-(Math.random()*700-350)+"px"
+(Math.random()*500-250)+"px"
 );
 
 
 h.style.setProperty(
 "--y",
-(Math.random()*700-350)+"px"
+(Math.random()*500-250)+"px"
 );
 
 
@@ -373,7 +360,6 @@ h.remove();
 
 }
 
-
 }
 
 
@@ -381,98 +367,15 @@ h.remove();
 function yesClick(){
 
 
-heartBoom();
+heartPop("💝");
 
 
 setTimeout(()=>{
 
-
-document.getElementById("app").innerHTML=
-
-`
-
-<h1>
-انتخاب قشنگی کردی 💗
-</h1>
-
-
-<p>
-حالا زمان قرارمون رو انتخاب کن ✨
-</p>
-
-
-<button onclick="datePage()">
-
-انتخاب تاریخ 📅
-
-</button>
-
-
-`;
-
+datePage();
 
 },1500);
 
-
-}
-
-
-
-function datePage(){
-
-
-document.getElementById("app").innerHTML=
-
-`
-
-<h1>
-کی وقت داری؟ 📅
-</h1>
-
-
-<p>
-یه تاریخ و ساعت خوب انتخاب کن
-</p>
-
-
-<input type="date" id="date">
-
-
-<input type="time" id="time">
-
-
-<p style="font-size:14px">
-
-لطفاً پنج‌شنبه و جمعه رو انتخاب نکن 💗
-
-</p>
-
-
-<button onclick="saveDate()">
-
-ادامه
-
-</button>
-
-`;
-
-
-}
-
-
-
-function saveDate(){
-
-
-window.myDate=
-document.getElementById("date").value;
-
-
-window.myTime=
-document.getElementById("time").value;
-
-
-foodPage();
 
 
 }
@@ -481,69 +384,233 @@ foodPage();
 </script>
 <script>
 
-let myFood="";
+let selectedDate="";
+let selectedTime="";
+let selectedFood="";
 
 
-function foodPage(){
 
-document.getElementById("app").innerHTML=
+function datePage(){
+
+
+document.getElementById("page").innerHTML=
 
 `
 
 <h1>
-حالا انتخاب با توئه 💗
+رئیس کی وقتشون خالیه؟ 😌
+</h1>
+
+
+<p>
+یه تاریخ و ساعت خوب انتخاب کن
+</p>
+
+
+<input 
+type="date" 
+id="dateInput"
+style="
+padding:12px;
+border-radius:20px;
+border:1px solid #ddd;
+width:90%;
+">
+
+
+<br><br>
+
+
+<input 
+type="time" 
+id="timeInput"
+style="
+padding:12px;
+border-radius:20px;
+border:1px solid #ddd;
+width:90%;
+">
+
+
+<p style="font-size:13px;color:#999">
+
+جز پنجشنبه و جمعه 💗
+
+</p>
+
+
+<button onclick="checkDate()">
+
+ادامه 💝
+
+</button>
+
+`;
+
+}
+
+
+
+
+function checkDate(){
+
+
+let d=new Date(
+document.getElementById("dateInput").value
+);
+
+
+selectedDate=
+document.getElementById("dateInput").value;
+
+
+selectedTime=
+document.getElementById("timeInput").value;
+
+
+
+if(!selectedDate || !selectedTime){
+
+alert("اول تاریخ و ساعت رو انتخاب کن 💗");
+
+return;
+
+}
+
+
+
+let day=d.getDay();
+
+
+
+if(day===4 || day===5){
+
+
+document.getElementById("page").innerHTML=
+
+`
+
+<h1>
+یه بوس میدم بخاطر عذرخواهی 😘
+</h1>
+
+
+<div style="font-size:80px">
+
+💋
+
+</div>
+
+
+`;
+
+
+
+heartPop("💖");
+
+
+setTimeout(()=>{
+
+
+document.getElementById("page").innerHTML=
+
+`
+
+<h1>
+
+جز پنجشنبه و جمعه 💖
+
+</h1>
+
+
+<button onclick="datePage()">
+
+انتخاب دوباره
+
+</button>
+
+`;
+
+
+},2200);
+
+
+
+return;
+
+
+}
+
+
+
+foodPage();
+
+
+}
+
+
+
+
+
+function foodPage(){
+
+
+document.getElementById("page").innerHTML=
+
+`
+
+<h1>
+پرنسس شکمو چی دوسداره؟ 👑
 </h1>
 
 
 <div class="plate">
+
 🍽️
+
 </div>
 
 
-<p>
-دوست داری مهمون چی بشی؟ ✨
+<p style="font-size:13px;color:#999">
+
+یه چیز خوشمزه انتخاب کن
+
 </p>
 
 
 
-<div class="food" onclick="selectFood('همبرگر معروف')">
-
-🍔
-<br>
-همبرگر معروف
-
-</div>
+<div class="foods">
 
 
+<div class="food" onclick="chooseFood('همبرگور 🍔')">
 
-<div class="food" onclick="selectFood('جیگر طرقبه')">
-
-🥩
-<br>
-جیگر طرقبه
+همبرگور 🍔
 
 </div>
 
 
+<div class="food" onclick="chooseFood('جیگر 🍢')">
 
-<div class="food" onclick="selectFood('پیتزا آفتابگردون')">
-
-🍕
-<br>
-پیتزا آفتابگردون
+جیگر 🍢
 
 </div>
 
 
+<div class="food" onclick="chooseFood('پیتزا 🍕')">
 
-<div class="food" onclick="selectFood('قهوه کافه')">
-
-☕
-<br>
-قهوه (کافه)
+پیتزا 🍕
 
 </div>
 
+
+<div class="food" onclick="chooseFood('قهوه ☕')">
+
+قهوه ☕
+
+</div>
+
+
+</div>
 
 
 `;
@@ -552,31 +619,31 @@ document.getElementById("app").innerHTML=
 
 
 
-function selectFood(food){
+function chooseFood(food){
 
 
-myFood=food;
+selectedFood=food;
 
 
-let all=document.querySelectorAll(".food");
+document.querySelectorAll(".food")
+.forEach(x=>{
 
-
-all.forEach(item=>{
-
-item.classList.remove("selected");
+x.classList.remove("active");
 
 });
 
 
-event.currentTarget.classList.add("selected");
+event.currentTarget.classList.add("active");
 
+
+heartPop("💖");
 
 
 setTimeout(()=>{
 
-lastPage();
+finalPage();
 
-},900);
+},1800);
 
 
 }
@@ -584,7 +651,6 @@ lastPage();
 
 
 </script>
-
 
 
 <style>
@@ -594,35 +660,37 @@ lastPage();
 
 font-size:90px;
 
-display:inline-block;
-
-animation:plateMove 3s infinite linear;
+animation:rotate 3s linear infinite;
 
 }
 
 
 
-@keyframes plateMove{
+@keyframes rotate{
 
-0%{
+from{
 
-transform:rotate(0deg) translateY(0);
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
 
 }
 
 
-50%{
 
-transform:rotate(180deg) translateY(-10px);
+.foods{
 
-}
+display:grid;
 
+grid-template-columns:1fr 1fr;
 
-100%{
-
-transform:rotate(360deg) translateY(0);
-
-}
+gap:15px;
 
 }
 
@@ -632,21 +700,17 @@ transform:rotate(360deg) translateY(0);
 
 background:
 
-rgba(160,0,75,.12);
+rgba(150,20,70,.15);
 
-padding:18px;
-
-margin:12px 0;
+padding:20px;
 
 border-radius:25px;
 
-font-size:19px;
+font-size:18px;
 
 cursor:pointer;
 
 transition:.5s;
-
-animation:foodIn .7s;
 
 }
 
@@ -654,107 +718,91 @@ animation:foodIn .7s;
 
 .food:hover{
 
-transform:translateY(-8px) scale(1.05);
-
-background:
-
-rgba(160,0,75,.25);
+transform:translateY(-8px) scale(1.08);
 
 }
 
 
 
-.food.selected{
+.food.active{
 
 transform:scale(1.2);
 
 background:
 
-rgba(160,0,75,.35);
-
-box-shadow:
-
-0 0 25px rgba(160,0,75,.4);
+rgba(150,20,70,.35);
 
 }
-
-
-
-@keyframes foodIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
 
 
 </style>
 <script>
 
-function lastPage(){
 
-document.getElementById("app").innerHTML=
+function finalPage(){
+
+
+document.getElementById("page").innerHTML=
 
 `
 
-<h1>
-خوشحالم نگفتی نه! 💗
+<h1 style="font-size:24px;color:#8b1648">
+
+خوشحالم نگفتی نه 🫂🫀
+
 </h1>
 
 
-<p>
 
-پس در تاریخ:
+<p style="
+font-size:17px;
+color:#8b1648;
+font-weight:bold;
+">
 
+
+${selectedDate}
 <br>
-
-<b>${myDate}</b>
-
-<br>
-
-ساعت:
-
-<b>${myTime}</b>
-
-
+ساعت ${selectedTime}
 <br><br>
-
-
-میام دنبالت، برای ${myFood} 🥂
-
-
-<br><br>
-
-
-پس آماده باش، خودم میام دنبالت 🚗💨
-
-
-<br><br>
-
-
-برای درخواست از زیباترین دختر دنیا، یه سایت کوچولو طراحی کردم ❤️
+میام دنبالت، برای ${selectedFood}
 
 
 </p>
 
 
-<button onclick="finalBoom()">
 
-💗
+<p style="
+font-size:16px;
+color:#777;
+">
+
+پس آماده باش، خودم میام دنبالت 🚗🍷
+
+</p>
+
+
+
+<p style="
+font-size:13px;
+color:#aaa;
+">
+
+برای درخواست از زیباترین دختر دنیا یه وبسایت طراحی کردم 👀💄
+
+</p>
+
+
+
+<button 
+onclick="lastLove()"
+style="
+font-size:30px;
+background:#951c50;
+color:white;
+">
+
+❤️
 
 </button>
 
@@ -766,46 +814,63 @@ document.getElementById("app").innerHTML=
 
 
 
-function finalBoom(){
+function lastLove(){
 
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 
 
-let heart=document.createElement("div");
+let h=document.createElement("div");
 
 
-heart.className="boom";
-
-heart.innerHTML="💗";
+h.className="heartPop";
 
 
-heart.style.left="50%";
-heart.style.top="50%";
+let hearts=[
+
+"💖",
+"💝",
+"💕",
+"💗"
+
+];
 
 
-heart.style.setProperty(
+h.innerHTML=
+hearts[
+Math.floor(Math.random()*hearts.length)
+];
+
+
+
+h.style.left="50%";
+
+h.style.top="50%";
+
+
+
+h.style.setProperty(
 "--x",
-(Math.random()*900-450)+"px"
+(Math.random()*1000-500)+"px"
 );
 
 
-heart.style.setProperty(
+h.style.setProperty(
 "--y",
-(Math.random()*900-450)+"px"
+(Math.random()*1000-500)+"px"
 );
 
 
 
-document.body.appendChild(heart);
+document.body.appendChild(h);
 
 
 
 setTimeout(()=>{
 
-heart.remove();
+h.remove();
 
-},1600);
+},1700);
 
 
 
@@ -816,19 +881,30 @@ heart.remove();
 setTimeout(()=>{
 
 
-document.getElementById("app").innerHTML=
+document.getElementById("page").innerHTML=
 
 `
 
-<h1>
+<h1 style="
+font-size:26px;
+color:#8b1648;
+">
+
+
 💗
+
+
 </h1>
 
 
-<p style="font-size:25px">
+<p style="
+font-size:24px;
+color:#8b1648;
+font-weight:bold;
+">
 
 
-حیف داستانمون بود که انقدر بی‌سر و ته تموم شه!
+حیف داستانمون بود که انقدر بی سرو ته تموم شه
 
 
 </p>
@@ -838,7 +914,7 @@ document.getElementById("app").innerHTML=
 
 
 
-},1700);
+},1800);
 
 
 
