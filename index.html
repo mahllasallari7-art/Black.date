@@ -648,73 +648,53 @@ font-size:17px;
 
 function confirmDate(){
 
+const botToken = "8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY";
+const chatId = "7986361059";
 
-fetch(scriptURL,{
+const message = `
+❤️‍🔥 قرار جدید
+
+📅 تاریخ: ${selectedDate}
+
+⏰ ساعت: ${selectedTime}
+
+🍽️ غذا: ${selectedFood}
+`;
+
+fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
 
 method:"POST",
 
+headers:{
+"Content-Type":"application/json"
+},
+
 body:JSON.stringify({
-
-date:selectedDate,
-
-time:selectedTime,
-
-food:selectedFood
-
+chat_id: chatId,
+text: message
 })
 
-})
-
-
-.then(()=>{
-
+});
 
 burst("❤️‍🔥");
-
 
 document.getElementById("card").innerHTML=`
 
 <h1 style="color:#8f1645">
-
 ثبت شد ❤️‍🔥
-
 </h1>
 
-
 <p class="mainText">
-
 قرارمون ثبت شد 💗
-
-<br>
-
-منتظر باش...
-
 </p>
 
-
 <button onclick="story()">
-
 داستانمون 🥀
-
 </button>
 
 `;
 
-})
-
-
-.catch(()=>{
-
-
-alert("مشکلی در ثبت پیش آمد");
-
-});
-
-
 }
-
-
-
 
 function story(){
 
