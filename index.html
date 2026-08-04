@@ -8,7 +8,6 @@
 
 <title>یک قرار خاص 💗</title>
 
-
 <style>
 
 *{
@@ -19,22 +18,19 @@ box-sizing:border-box;
 body{
 
 margin:0;
-
 min-height:100vh;
 
 display:flex;
-
 align-items:center;
-
 justify-content:center;
 
 font-family:tahoma;
 
 background:
-
 linear-gradient(
-rgba(90,0,45,.9),
-rgba(40,0,25,.95)
+135deg,
+#8b003f,
+#350019
 );
 
 overflow:hidden;
@@ -43,27 +39,23 @@ overflow:hidden;
 
 
 
-.box{
+.card{
 
 width:90%;
-
 max-width:430px;
+
+background:rgba(255,255,255,.88);
 
 padding:35px;
 
-text-align:center;
-
-background:
-
-rgba(255,255,255,.88);
-
 border-radius:35px;
 
+text-align:center;
+
 box-shadow:
+0 20px 60px rgba(0,0,0,.35);
 
-0 15px 50px rgba(0,0,0,.4);
-
-color:#5a0030;
+color:#65002f;
 
 animation:show 1s;
 
@@ -95,7 +87,7 @@ transform:translateY(0);
 
 h1{
 
-color:#98004b;
+color:#a0004d;
 
 }
 
@@ -113,7 +105,7 @@ line-height:2;
 
 button{
 
-border:none;
+border:0;
 
 border-radius:40px;
 
@@ -133,7 +125,7 @@ transition:.4s;
 
 #yes{
 
-background:#a80055;
+background:#a0004d;
 
 color:white;
 
@@ -145,7 +137,7 @@ color:white;
 
 background:#eee;
 
-color:#800040;
+color:#80003b;
 
 }
 
@@ -159,13 +151,13 @@ transform:scale(1.1);
 
 
 
-.floatHeart{
+.floating{
 
-position:absolute;
+position:fixed;
 
 font-size:25px;
 
-animation:float 8s infinite linear;
+animation:float 8s linear infinite;
 
 }
 
@@ -189,7 +181,7 @@ transform:translateY(-20vh);
 
 
 
-.burst{
+.boom{
 
 position:fixed;
 
@@ -197,14 +189,13 @@ font-size:30px;
 
 z-index:10;
 
-animation:explode 1.5s forwards;
+animation:boom 1.5s forwards;
 
 }
 
 
 
-@keyframes explode{
-
+@keyframes boom{
 
 0%{
 
@@ -222,7 +213,6 @@ transform:translate(var(--x),var(--y)) scale(1.5);
 opacity:0;
 
 }
-
 
 }
 
@@ -245,6 +235,7 @@ font-size:16px;
 }
 
 
+
 </style>
 
 </head>
@@ -253,15 +244,13 @@ font-size:16px;
 <body>
 
 
-<div class="floatHeart" style="left:10%">💗</div>
-
-<div class="floatHeart" style="left:45%;animation-delay:2s">💗</div>
-
-<div class="floatHeart" style="left:75%;animation-delay:4s">💗</div>
+<div class="floating" style="left:15%">💗</div>
+<div class="floating" style="left:50%;animation-delay:2s">💗</div>
+<div class="floating" style="left:80%;animation-delay:4s">💗</div>
 
 
 
-<div class="box" id="box">
+<div class="card" id="app">
 
 
 <h1>
@@ -269,7 +258,7 @@ font-size:16px;
 </h1>
 
 
-<p id="message">
+<p id="text">
 
 با من میای سر یه دیت خاص؟ ✨
 
@@ -299,74 +288,74 @@ font-size:16px;
 
 let yesSize=18;
 
-let noCount=0;
+let noIndex=0;
 
 
 function noClick(){
 
 
-noCount++;
-
-
-let texts=[
+let messages=[
 
 "مطمئنی؟ یه بار دیگه فکر کن 💗",
 
 "شاید این همون قراری باشه که بعداً خوشحالت کنه 😌",
 
-"هنوز می‌تونی انتخاب قشنگ‌تری داشته باشی ✨",
+"هنوز فرصت داری انتخاب قشنگ‌تری داشته باشی ✨",
 
-"فکر کنم جواب واقعیت رو خودت می‌دونی 💗"
+"فکر کنم جواب قلبت یه چیز دیگه‌ست 💗"
 
 ];
 
 
-document.getElementById("message").innerHTML=
+document.getElementById("text").innerHTML=
+messages[Math.min(noIndex,3)];
 
-texts[Math.min(noCount-1,3)];
+
+noIndex++;
 
 
 yesSize+=12;
 
 
 document.getElementById("yes").style.fontSize=
-
 yesSize+"px";
+
+
+document.getElementById("yes").style.transform=
+"scale(1.1)";
 
 
 }
 
 
 
+function heartBoom(){
 
-function heartExplosion(){
 
-
-for(let i=0;i<50;i++){
+for(let i=0;i<70;i++){
 
 
 let h=document.createElement("div");
 
 
-h.className="burst";
+h.className="boom";
 
 h.innerHTML="💗";
 
 
 h.style.left="50%";
-
 h.style.top="50%";
 
 
 h.style.setProperty(
 "--x",
-(Math.random()*600-300)+"px"
+(Math.random()*700-350)+"px"
 );
 
 
 h.style.setProperty(
 "--y",
-(Math.random()*600-300)+"px"
+(Math.random()*700-350)+"px"
 );
 
 
@@ -378,7 +367,7 @@ setTimeout(()=>{
 
 h.remove();
 
-},1600);
+},1500);
 
 
 
@@ -386,21 +375,19 @@ h.remove();
 
 
 }
-
 
 
 
 function yesClick(){
 
 
-heartExplosion();
+heartBoom();
 
 
 setTimeout(()=>{
 
 
-document.getElementById("box").innerHTML=
-
+document.getElementById("app").innerHTML=
 
 `
 
@@ -410,11 +397,11 @@ document.getElementById("box").innerHTML=
 
 
 <p>
-حالا بریم قرارمون رو بسازیم ✨
+حالا زمان قرارمون رو انتخاب کن ✨
 </p>
 
 
-<button onclick="showDate()">
+<button onclick="datePage()">
 
 انتخاب تاریخ 📅
 
@@ -424,27 +411,17 @@ document.getElementById("box").innerHTML=
 `;
 
 
-},1600);
+},1500);
 
 
 }
 
 
 
-</script>
-  <script>
+function datePage(){
 
 
-let dateSelected="";
-let timeSelected="";
-let foodSelected="";
-
-
-
-function showDate(){
-
-
-document.getElementById("box").innerHTML=
+document.getElementById("app").innerHTML=
 
 `
 
@@ -454,19 +431,19 @@ document.getElementById("box").innerHTML=
 
 
 <p>
-یه تاریخ و ساعت خوب انتخاب کن 💗
+یه تاریخ و ساعت خوب انتخاب کن
 </p>
 
 
-<input type="date" id="dateInput">
+<input type="date" id="date">
 
 
-<input type="time" id="timeInput">
+<input type="time" id="time">
 
 
-<p style="font-size:14px;color:#8b0038">
+<p style="font-size:14px">
 
-لطفاً پنج‌شنبه و جمعه رو انتخاب نکن ✨
+لطفاً پنج‌شنبه و جمعه رو انتخاب نکن 💗
 
 </p>
 
@@ -479,30 +456,20 @@ document.getElementById("box").innerHTML=
 
 `;
 
-}
 
+}
 
 
 
 function saveDate(){
 
 
-dateSelected=
-document.getElementById("dateInput").value;
+window.myDate=
+document.getElementById("date").value;
 
 
-timeSelected=
-document.getElementById("timeInput").value;
-
-
-
-if(!dateSelected || !timeSelected){
-
-alert("اول تاریخ و ساعت رو انتخاب کن 💗");
-
-return;
-
-}
+window.myTime=
+document.getElementById("time").value;
 
 
 foodPage();
@@ -511,12 +478,15 @@ foodPage();
 }
 
 
+</script>
+<script>
+
+let myFood="";
 
 
 function foodPage(){
 
-
-document.getElementById("box").innerHTML=
+document.getElementById("app").innerHTML=
 
 `
 
@@ -526,45 +496,50 @@ document.getElementById("box").innerHTML=
 
 
 <div class="plate">
-
 🍽️
-
 </div>
 
 
 <p>
-چی دوست داری مهمونت کنم؟ ✨
+دوست داری مهمون چی بشی؟ ✨
 </p>
 
 
 
-<div class="food" onclick="chooseFood('همبرگر معروف')">
+<div class="food" onclick="selectFood('همبرگر معروف')">
 
-🍔 همبرگر معروف
-
-</div>
-
-
-<div class="food" onclick="chooseFood('جیگر طرقبه')">
-
-🥩 جیگر طرقبه
+🍔
+<br>
+همبرگر معروف
 
 </div>
 
 
-<div class="food" onclick="chooseFood('پیتزا آفتابگردون')">
+
+<div class="food" onclick="selectFood('جیگر طرقبه')">
+
+🥩
+<br>
+جیگر طرقبه
+
+</div>
+
+
+
+<div class="food" onclick="selectFood('پیتزا آفتابگردون')">
 
 🍕
-
+<br>
 پیتزا آفتابگردون
 
 </div>
 
 
-<div class="food" onclick="chooseFood('قهوه کافه')">
+
+<div class="food" onclick="selectFood('قهوه کافه')">
 
 ☕
-
+<br>
 قهوه (کافه)
 
 </div>
@@ -577,29 +552,31 @@ document.getElementById("box").innerHTML=
 
 
 
-
-function chooseFood(food){
-
-
-foodSelected=food;
+function selectFood(food){
 
 
-document.querySelectorAll(".food").forEach(item=>{
+myFood=food;
 
-item.style.transform="scale(.9)";
+
+let all=document.querySelectorAll(".food");
+
+
+all.forEach(item=>{
+
+item.classList.remove("selected");
 
 });
 
 
-event.target.style.transform="scale(1.15)";
+event.currentTarget.classList.add("selected");
+
 
 
 setTimeout(()=>{
 
-finalPage();
+lastPage();
 
-},800);
-
+},900);
 
 
 }
@@ -615,31 +592,37 @@ finalPage();
 
 .plate{
 
+font-size:90px;
 
-font-size:80px;
+display:inline-block;
 
-animation:rotatePlate 3s infinite linear;
-
-}
-
-
-
-@keyframes rotatePlate{
-
-
-from{
-
-transform:rotate(0deg);
+animation:plateMove 3s infinite linear;
 
 }
 
 
-to{
 
-transform:rotate(360deg);
+@keyframes plateMove{
+
+0%{
+
+transform:rotate(0deg) translateY(0);
 
 }
 
+
+50%{
+
+transform:rotate(180deg) translateY(-10px);
+
+}
+
+
+100%{
+
+transform:rotate(360deg) translateY(0);
+
+}
 
 }
 
@@ -647,29 +630,23 @@ transform:rotate(360deg);
 
 .food{
 
-
 background:
 
-rgba(150,0,70,.15);
+rgba(160,0,75,.12);
 
+padding:18px;
 
-padding:15px;
-
-
-margin:12px;
-
+margin:12px 0;
 
 border-radius:25px;
 
+font-size:19px;
 
 cursor:pointer;
 
+transition:.5s;
 
-transition:.4s;
-
-
-animation:appear .7s;
-
+animation:foodIn .7s;
 
 }
 
@@ -677,30 +654,41 @@ animation:appear .7s;
 
 .food:hover{
 
-
-transform:scale(1.1);
-
+transform:translateY(-8px) scale(1.05);
 
 background:
 
-rgba(150,0,70,.3);
-
+rgba(160,0,75,.25);
 
 }
 
 
 
-@keyframes appear{
+.food.selected{
 
+transform:scale(1.2);
+
+background:
+
+rgba(160,0,75,.35);
+
+box-shadow:
+
+0 0 25px rgba(160,0,75,.4);
+
+}
+
+
+
+@keyframes foodIn{
 
 from{
 
 opacity:0;
 
-transform:translateY(30px);
+transform:translateY(40px);
 
 }
-
 
 to{
 
@@ -710,46 +698,43 @@ transform:translateY(0);
 
 }
 
-
 }
 
 
+
 </style>
-  <script>
+<script>
 
+function lastPage(){
 
-function finalPage(){
-
-
-document.getElementById("box").innerHTML=
+document.getElementById("app").innerHTML=
 
 `
 
 <h1>
-رئیس عصبانی 😌💗
+خوشحالم نگفتی نه! 💗
 </h1>
 
 
 <p>
 
-
-خوشحالم نگفتی نه! 💗
-
-
-<br><br>
-
-
-پس تاریخ ${dateSelected}
+پس در تاریخ:
 
 <br>
 
-ساعت ${timeSelected}
+<b>${myDate}</b>
+
+<br>
+
+ساعت:
+
+<b>${myTime}</b>
 
 
 <br><br>
 
 
-میام دنبالت، برای ${foodSelected} 🥂
+میام دنبالت، برای ${myFood} 🥂
 
 
 <br><br>
@@ -767,9 +752,9 @@ document.getElementById("box").innerHTML=
 </p>
 
 
-<button onclick="lastExplosion()">
+<button onclick="finalBoom()">
 
-ادامه 💗
+💗
 
 </button>
 
@@ -781,60 +766,46 @@ document.getElementById("box").innerHTML=
 
 
 
-function lastExplosion(){
+function finalBoom(){
 
 
-for(let i=0;i<70;i++){
+for(let i=0;i<100;i++){
 
 
-let h=document.createElement("div");
+let heart=document.createElement("div");
 
 
-h.innerHTML="💗";
+heart.className="boom";
+
+heart.innerHTML="💗";
 
 
-h.style.position="fixed";
-
-h.style.left="50%";
-
-h.style.top="50%";
-
-h.style.fontSize=
-(20+Math.random()*30)+"px";
+heart.style.left="50%";
+heart.style.top="50%";
 
 
-h.style.transition="2s";
+heart.style.setProperty(
+"--x",
+(Math.random()*900-450)+"px"
+);
 
 
-document.body.appendChild(h);
+heart.style.setProperty(
+"--y",
+(Math.random()*900-450)+"px"
+);
 
 
 
-setTimeout(()=>{
-
-
-h.style.transform=
-
-`
-translate(
-${Math.random()*900-450}px,
-${Math.random()*900-450}px
-)
-scale(1.5)
-`;
-
-h.style.opacity="0";
-
-
-},50);
+document.body.appendChild(heart);
 
 
 
 setTimeout(()=>{
 
-h.remove();
+heart.remove();
 
-},2200);
+},1600);
 
 
 
@@ -845,7 +816,7 @@ h.remove();
 setTimeout(()=>{
 
 
-document.getElementById("box").innerHTML=
+document.getElementById("app").innerHTML=
 
 `
 
@@ -854,9 +825,11 @@ document.getElementById("box").innerHTML=
 </h1>
 
 
-<p style="font-size:24px">
+<p style="font-size:25px">
+
 
 حیف داستانمون بود که انقدر بی‌سر و ته تموم شه!
+
 
 </p>
 
@@ -864,7 +837,9 @@ document.getElementById("box").innerHTML=
 `;
 
 
-},2200);
+
+},1700);
+
 
 
 }
@@ -872,7 +847,6 @@ document.getElementById("box").innerHTML=
 
 
 </script>
-
 
 
 </body>
