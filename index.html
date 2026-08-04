@@ -943,30 +943,26 @@ const data = {
   food: selectedFood
 };
 
+// ارسال به Google Apps Script
 fetch("https://script.google.com/macros/s/AKfycbzVc9tDopxItZtdh6ynzTEor73eH--Y9x6Iq6ax24ZMtrOQZj3F9QlZxDs0h59KGx11/exec", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
+  mode: "no-cors",
   body: JSON.stringify(data)
-})
-.then(() => {
-  document.getElementById("page").innerHTML = `
-
-    <h1 style="color:#8b1648;font-size:28px;">
-      قرار ثبت شد ❤️‍🔥
-    </h1>
-
-    <p style="color:#7d1743;font-size:18px;line-height:2;">
-      منتظر دیدنت میمونم 🫂🍷
-    </p>
-
-    <div style="font-size:70px;">💖</div>
-  `;
-})
-.catch((err) => {
-  alert("خطا در ثبت قرار ❌" + err);
 });
+
+// نمایش پیام موفقیت
+document.getElementById("page").innerHTML = `
+
+  <h1 style="color:#8b1648;font-size:28px;">
+    قرار ثبت شد ❤️‍🔥
+  </h1>
+
+  <p style="color:#7d1743;font-size:18px;line-height:2;">
+    منتظر دیدنت میمونم 🫂🍷
+  </p>
+
+  <div style="font-size:70px;">💖</div>
+`;
 
 }
 </script>
