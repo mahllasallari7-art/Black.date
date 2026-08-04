@@ -1,79 +1,54 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>برای افرودیت ❤️</title>
+<title>یک قرار خاص ❤️</title>
 
 <style>
 
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:tahoma, sans-serif;
-    overflow:hidden;
-    
-    background:
-    linear-gradient(rgba(80,0,20,.75),rgba(30,0,10,.9)),
-    url("photo.jpg");
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:tahoma, sans-serif;
 
-    background-size:cover;
-    background-position:center;
+background:
+linear-gradient(rgba(70,0,25,.85),rgba(20,0,10,.95)),
+url("photo.jpg");
+
+background-size:cover;
+background-position:center;
+
+color:white;
+overflow:hidden;
 }
-
-
-/* قلب های شناور */
-
-.heart{
-    position:absolute;
-    color:#ffb6c1;
-    animation:float 8s linear infinite;
-    opacity:.6;
-}
-
-@keyframes float{
-
-0%{
-    transform:translateY(100vh) scale(1);
-}
-
-100%{
-    transform:translateY(-20vh) scale(1.5);
-}
-
-}
-
 
 
 .box{
 
-    width:90%;
-    max-width:420px;
+width:90%;
+max-width:430px;
 
-    background:rgba(60,0,20,.85);
+padding:35px;
 
-    border:1px solid rgba(255,255,255,.2);
+background:rgba(65,0,25,.88);
 
-    padding:35px;
+border-radius:35px;
 
-    border-radius:35px;
+text-align:center;
 
-    text-align:center;
+box-shadow:0 0 45px #000;
 
-    color:white;
-
-    box-shadow:
-    0 0 40px #000;
-
-    animation:show 1.5s;
+animation:show 1s;
 
 }
 
@@ -82,7 +57,7 @@ body{
 
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(30px);
 }
 
 to{
@@ -93,20 +68,16 @@ transform:translateY(0);
 }
 
 
+
 h1{
-
-color:#ffd1dc;
-
 font-size:30px;
-
+color:#ffd6df;
 }
-
 
 
 p{
 
 font-size:19px;
-
 line-height:2;
 
 }
@@ -115,15 +86,14 @@ line-height:2;
 
 button{
 
-border:none;
+border:0;
+border-radius:40px;
 
 padding:15px 30px;
 
-border-radius:40px;
+margin:10px;
 
 font-size:18px;
-
-margin:10px;
 
 cursor:pointer;
 
@@ -135,7 +105,7 @@ transition:.3s;
 
 #yes{
 
-background:#b0003a;
+background:#b00040;
 
 color:white;
 
@@ -153,6 +123,66 @@ color:white;
 
 
 
+.heart{
+
+position:absolute;
+
+font-size:25px;
+
+animation:move 8s linear infinite;
+
+opacity:.5;
+
+}
+
+
+@keyframes move{
+
+0%{
+transform:translateY(100vh);
+}
+
+100%{
+transform:translateY(-20vh);
+}
+
+}
+
+
+
+input, select{
+
+width:90%;
+
+padding:12px;
+
+border-radius:20px;
+
+border:none;
+
+margin:8px;
+
+font-size:16px;
+
+}
+
+
+.option{
+
+background:#80002f;
+
+padding:15px;
+
+border-radius:20px;
+
+margin:10px;
+
+cursor:pointer;
+
+}
+
+
+
 </style>
 
 </head>
@@ -161,10 +191,9 @@ color:white;
 <body>
 
 
-<div class="heart" style="left:10%;animation-delay:1s;">❤️</div>
-<div class="heart" style="left:40%;animation-delay:3s;">❤️</div>
-<div class="heart" style="left:70%;animation-delay:5s;">❤️</div>
-<div class="heart" style="left:85%;animation-delay:2s;">❤️</div>
+<div class="heart" style="left:10%">❤️</div>
+<div class="heart" style="left:40%;animation-delay:2s">❤️</div>
+<div class="heart" style="left:70%;animation-delay:4s">❤️</div>
 
 
 <audio id="music" loop>
@@ -173,7 +202,7 @@ color:white;
 
 
 
-<div class="box">
+<div class="box" id="box">
 
 
 <h1>
@@ -181,27 +210,25 @@ color:white;
 </h1>
 
 
-<p>
+<p id="text">
 
-یه سوال مهم دارم ازت... 🌙
+یه سوال مهم دارم ازت...
 
 <br>
 
-با من میای سر یه دیت خاص؟ 💕
+با من میای سر یه دیت خاص؟ ✨
 
 </p>
 
 
-
 <button id="yes" onclick="yesClick()">
-😍 آره میام
+آره 😍
 </button>
 
 
 <button id="no" onclick="noClick()">
-😐 نه
+نه
 </button>
-
 
 
 </div>
@@ -211,14 +238,36 @@ color:white;
 <script>
 
 
-let size=18;
+let yesSize=18;
+
+let noCount=0;
 
 
 function noClick(){
 
-size+=10;
+noCount++;
 
-document.getElementById("yes").style.fontSize=size+"px";
+let messages=[
+
+"مطمئنی؟ یه بار دیگه فکر کن... ❤️",
+
+"شاید این همون قراری باشه که بعداً بابتش خوشحال بشی 😌",
+
+"هنوز فرصت داری انتخاب قشنگ‌تری کنی ✨",
+
+"فکر کنم جواب واقعیت یه چیز دیگه‌ست 😄"
+
+];
+
+
+document.getElementById("text").innerHTML=
+messages[Math.min(noCount-1,3)];
+
+
+yesSize+=12;
+
+document.getElementById("yes").style.fontSize=
+yesSize+"px";
 
 }
 
@@ -226,28 +275,296 @@ document.getElementById("yes").style.fontSize=size+"px";
 
 function yesClick(){
 
-document.querySelector(".box").innerHTML=
+document.getElementById("music").play().catch(()=>{});
+
+
+document.getElementById("box").innerHTML=
 
 `
+
 <h1>
-آفرین 😍❤️
+انتخاب قشنگی کردی ❤️
 </h1>
 
+
 <p>
-می‌دونستم انتخاب درستی می‌کنی ✨
+
+می‌دونستم تصمیم درستی می‌گیری.
+
+<br>
+
+حالا بریم قرارمون رو بسازیم ✨
+
+</p>
+
+
+<button onclick="showDate()">
+
+انتخاب تاریخ و ساعت 📅
+
+</button>
+
+
+`;
+
+}
+
+
+
+</script>
+<script>
+
+let selectedDate="";
+let selectedTime="";
+let selectedFood="";
+
+
+function showDate(){
+
+document.getElementById("box").innerHTML=
+
+`
+
+<h1>
+کی وقت داری؟ 📅
+</h1>
+
+
+<p>
+یه تاریخ و ساعت خوب انتخاب کن ❤️
+</p>
+
+
+<input type="date" id="date">
+
+
+<br>
+
+<input type="time" id="time">
+
+
+<p style="font-size:14px">
+
+یه خواهش کوچولو ✨
+<br>
+لطفاً پنج‌شنبه و جمعه رو انتخاب نکن
+
+</p>
+
+
+<button onclick="saveDate()">
+
+ادامه
+
+</button>
+
+
+`;
+
+}
+
+
+
+function saveDate(){
+
+let date=document.getElementById("date").value;
+
+let time=document.getElementById("time").value;
+
+
+if(!date || !time){
+
+alert("اول تاریخ و ساعت رو انتخاب کن ❤️");
+
+return;
+
+}
+
+
+let day=new Date(date).getDay();
+
+
+if(day==4 || day==5){
+
+alert("یه روز دیگه انتخاب کن، پنج‌شنبه و جمعه نه 😄");
+
+return;
+
+}
+
+
+selectedDate=date;
+
+selectedTime=time;
+
+
+showFood();
+
+
+}
+
+
+
+function showFood(){
+
+
+document.getElementById("box").innerHTML=
+
+`
+
+<h1>
+خب حالا انتخاب با توئه ❤️
+</h1>
+
+
+<p>
+دوست داری مهمون چی بشی؟ ✨
+</p>
+
+
+<div class="option" onclick="chooseFood('همبرگر معروف')">
+
+🍔 همبرگر معروف
+
+</div>
+
+
+<div class="option" onclick="chooseFood('جیگر طرقبه')">
+
+🥩 جیگر طرقبه
+
+</div>
+
+
+<div class="option" onclick="chooseFood('پیتزا آفتابگردون')">
+
+🍕 پیتزا آفتابگردون
+
+</div>
+
+
+<div class="option" onclick="chooseFood('قهوه کافه')">
+
+☕ قهوه (کافه)
+
+</div>
+
+
+`;
+
+}
+
+
+
+
+function chooseFood(food){
+
+
+selectedFood=food;
+
+
+finalPage();
+
+
+}
+
+
+
+</script>
+<script>
+
+function finalPage(){
+
+
+let niceDate = new Date(selectedDate).toLocaleDateString("en-US");
+
+
+document.getElementById("box").innerHTML=
+
+`
+
+<h1>
+رئیس عصبانی 😌🔥
+</h1>
+
+
+<p>
+
+قرارمون ثبت شد ❤️
 
 <br><br>
 
-یه قرار قشنگ در انتظارمونه 🌙
+
+📅 تاریخ: ${niceDate}
+
+<br>
+
+⏰ ساعت: ${selectedTime}
+
+
+<br><br>
+
+
+🚗 آماده باش، همون موقع میام دنبالت.
+
+
+<br><br>
+
+
+امیدوارم این قرار، شروع یک خاطره‌ی قشنگ باشه ❤️
+
+
+<br><br>
+
+
+حیف داستانمون بود که انقدر بی‌سر و ته تموم شه!
 
 </p>
+
+
 `;
 
 
 
-let music=document.getElementById("music");
+sendToTelegram();
 
-music.play().catch(()=>{});
+}
+
+
+
+
+function sendToTelegram(){
+
+
+/*
+
+اینجا بعداً اطلاعات تلگرام وصل میشه
+
+تاریخ:
+selectedDate
+
+ساعت:
+selectedTime
+
+غذا:
+selectedFood
+
+*/
+
+
+console.log(
+
+"Date:",
+selectedDate,
+
+"Time:",
+selectedTime,
+
+"Food:",
+selectedFood
+
+);
+
 
 }
 
