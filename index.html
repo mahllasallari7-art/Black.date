@@ -1,958 +1,332 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Black Date ❤️</title>
-
+<title>Black Date ❤️‍🔥</title>
 
 <style>
-
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
+  font-family:Tahoma, Arial, sans-serif;
 }
-
 
 body{
-
-margin:0;
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-family:tahoma, sans-serif;
-
-overflow:hidden;
-
-background:
-linear-gradient(135deg,#b84b70,#f2b6c8,#8d2148);
-
+  margin:0;
+  min-height:100vh;
+  overflow:hidden;
+  background:linear-gradient(135deg,#fff5f8,#f7c7d8,#fff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-
-
-.bgEmoji{
-
-position:fixed;
-
-font-size:35px;
-
-opacity:.45;
-
-animation:move 10s linear infinite;
-
+.bg{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
 }
 
-
+.emoji{
+  position:absolute;
+  font-size:30px;
+  animation:move 12s linear infinite;
+  opacity:.7;
+}
 
 @keyframes move{
-
-0%{
-transform:translateY(110vh) rotate(0deg);
+  0%{
+    transform:translateY(110vh) rotate(0deg);
+  }
+  100%{
+    transform:translateY(-20vh) rotate(360deg);
+  }
 }
-
-100%{
-transform:translateY(-20vh) rotate(360deg);
-}
-
-}
-
-
 
 .card{
-
-width:90%;
-max-width:430px;
-
-background:rgba(255,255,255,.85);
-
-border-radius:35px;
-
-padding:35px;
-
-text-align:center;
-
-box-shadow:0 20px 60px rgba(100,0,40,.25);
-
-animation:show 1s;
-
-color:#7d1743;
-
+  width:90%;
+  max-width:420px;
+  background:rgba(255,255,255,.85);
+  padding:30px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(139,22,72,.15);
+  position:relative;
+  z-index:2;
 }
-
-
-
-@keyframes show{
-
-from{
-
-opacity:0;
-
-transform:scale(.8);
-
-}
-
-to{
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-}
-
-
 
 h1{
-
-color:#951c50;
-
-font-size:27px;
-
+  color:#a83262;
 }
-
-
 
 p{
-
-font-size:18px;
-
-line-height:2;
-
+  color:#555;
+  line-height:2;
 }
-
-
 
 button{
-
-border:0;
-
-border-radius:40px;
-
-padding:14px 30px;
-
-margin:8px;
-
-font-size:18px;
-
-cursor:pointer;
-
-transition:.5s;
-
+  border:none;
+  padding:14px 30px;
+  margin:10px;
+  border-radius:30px;
+  font-size:18px;
+  cursor:pointer;
+  background:#b83b6f;
+  color:white;
+  transition:.3s;
 }
 
-
-
-#yes{
-
-background:#951c50;
-
-color:white;
-
+button:hover{
+  transform:scale(1.08);
 }
 
-
-
-#no{
-
-background:#f5dce6;
-
-color:#951c50;
-
+.hidden{
+  display:none;
 }
 
-
-
-#hint{
-
-margin-top:15px;
-
-font-size:14px;
-
-color:#951c50;
-
-min-height:25px;
-
+input,select{
+  width:90%;
+  padding:12px;
+  margin:8px;
+  border-radius:15px;
+  border:1px solid #ddd;
+  font-size:16px;
 }
-
-
-
-.heartPop{
-
-position:fixed;
-
-font-size:35px;
-
-animation:pop 1.5s forwards;
-
-z-index:10;
-
-}
-
-
-
-@keyframes pop{
-
-0%{
-
-transform:scale(0);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translate(var(--x),var(--y)) scale(2);
-
-opacity:0;
-
-}
-
-}
-
-
 </style>
 
 </head>
 
-
 <body>
 
-
-<div class="bgEmoji" style="left:10%">💋</div>
-<div class="bgEmoji" style="left:25%;animation-delay:2s">🌶️</div>
-<div class="bgEmoji" style="left:40%;animation-delay:4s">❣️</div>
-<div class="bgEmoji" style="left:55%;animation-delay:1s">❤️‍🔥</div>
-<div class="bgEmoji" style="left:70%;animation-delay:3s">🍒</div>
-<div class="bgEmoji" style="left:85%;animation-delay:5s">🍷</div>
-<div class="bgEmoji" style="left:50%;animation-delay:6s">🥀</div>
-
-
+<div class="bg" id="bg"></div>
 
 <div class="card" id="page">
 
-
-<h1>
-با من میای سر قرار؟🥹
-</h1>
-
+<h1>❤️‍🔥 قرارمون</h1>
 
 <p>
-فقط یه سوال ساده‌ست...
-<br>
-جواب درست هم فقط یکیشه 😏
+چندتا سوال کوچولو دارم...
 </p>
 
-
-
-<button id="yes" onclick="yesClick()">
-آره ❤️‍🔥
-</button>
-
-
-<button id="no" onclick="noClick()">
-نه
-</button>
-
-
-<div id="hint"></div>
-
+<button onclick="start()">شروع کنیم 💕</button>
 
 </div>
 
-
-
 <script>
 
+const scriptURL="https://script.google.com/macros/s/AKfycbyC8iNDuTp_NWPh2P01qJodtmMuKZX785S5Ch8sKfWNAGR0qUuhgxtPsTHBvQ56hJHO/exec";
 
-let yesScale=1;
-
-let noNumber=0;
-
-
-
-function noClick(){
-
-
-let text=[
-
-"اره منتظرته❤️‍🔥",
-
-"زودباش دیگه اذیت نکن🌶️",
-
-"بسه مگه باهات شوخی دارم، خودتم میدونی گزینه درست کدومه 🙃"
-
-];
-
-
-document.getElementById("hint").innerHTML=
-text[Math.min(noNumber,2)];
-
-
-noNumber++;
-
-
-yesScale+=0.15;
-
-
-let yes=document.getElementById("yes");
-
-yes.style.transform=
-`scale(${yesScale})`;
-
-
-yes.style.fontSize=
-(18+noNumber*3)+"px";
-
-
-}
-
-
-
-function heartPop(icon="💝"){
-
-
-for(let i=0;i<35;i++){
-
-
-let h=document.createElement("div");
-
-h.className="heartPop";
-
-h.innerHTML=icon;
-
-
-h.style.left="50%";
-
-h.style.top="50%";
-
-
-h.style.setProperty(
-"--x",
-(Math.random()*500-250)+"px"
-);
-
-
-h.style.setProperty(
-"--y",
-(Math.random()*500-250)+"px"
-);
-
-
-document.body.appendChild(h);
-
-
-
-setTimeout(()=>{
-
-h.remove();
-
-},1500);
-
-
-
-}
-
-}
-
-
-
-function yesClick(){
-
-
-heartPop("💝");
-
-
-setTimeout(()=>{
-
-datePage();
-
-},1500);
-
-
-
-}
-
-
-</script>
-<script>
 
 let selectedDate="";
 let selectedTime="";
 let selectedFood="";
 
 
+const emojis=[
+"❤️","💖","💕","❤️‍🔥","💋",
+"🌶️","🍒","🍓","🍷",
+"🥂","🥀","❣️","💝"
+];
 
-function datePage(){
+
+for(let i=0;i<40;i++){
+ let e=document.createElement("div");
+ e.className="emoji";
+ e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+ e.style.left=Math.random()*100+"%";
+ e.style.animationDelay=Math.random()*10+"s";
+ e.style.fontSize=(20+Math.random()*25)+"px";
+ document.getElementById("bg").appendChild(e);
+}
 
 
-document.getElementById("page").innerHTML=
+function hearts(){
 
-`
+ for(let i=0;i<35;i++){
+  let h=document.createElement("div");
+  h.innerHTML="💖";
+  h.style.position="fixed";
+  h.style.left="50%";
+  h.style.top="50%";
+  h.style.fontSize="30px";
+  h.style.zIndex="5";
 
-<h1>
-رئیس کی وقتشون خالیه؟ 😌
-</h1>
+  let x=(Math.random()-0.5)*400;
+  let y=(Math.random()-0.5)*400;
 
+  h.animate([
+   {transform:"translate(0,0)",opacity:1},
+   {transform:`translate(${x}px,${y}px)`,opacity:0}
+  ],{
+   duration:1000
+  });
+
+  document.body.appendChild(h);
+
+  setTimeout(()=>h.remove(),1000);
+ }
+
+}
+
+
+function start(){
+
+ hearts();
+
+ document.getElementById("page").innerHTML=`
+
+<h1>اول انتخاب کن ❤️</h1>
+
+<p>چه روزی ببینمت؟</p>
+
+<input type="date" id="date">
+
+<br>
+
+<button onclick="saveDate()">بعدی 💕</button>
+
+`;
+
+}
+<script>
+
+function saveDate(){
+
+ selectedDate=document.getElementById("date").value;
+
+ hearts();
+
+ document.getElementById("page").innerHTML=`
+
+<h1>خب حالا ساعت ❤️‍🔥</h1>
+
+<p>چه ساعتی بیام دنبالت؟</p>
+
+<input type="time" id="time">
+
+<br>
+
+<button onclick="saveTime()">بعدی 💕</button>
+
+`;
+
+}
+
+
+function saveTime(){
+
+ selectedTime=document.getElementById("time").value;
+
+ hearts();
+
+ document.getElementById("page").innerHTML=`
+
+<h1>انتخاب آخر 🍓</h1>
+
+<p>چی بخوریم؟</p>
+
+<select id="food">
+<option>پیتزا 🍕</option>
+<option>برگر 🍔</option>
+<option>سوشی 🍣</option>
+<option>دسر و قهوه 🍰☕</option>
+<option>هرچی تو بخوای ❤️</option>
+</select>
+
+<br>
+
+<button onclick="saveFood()">ثبت انتخاب 💖</button>
+
+`;
+
+}
+
+
+function saveFood(){
+
+ selectedFood=document.getElementById("food").value;
+
+ hearts();
+
+ document.getElementById("page").innerHTML=`
+
+<h1>همه چی آماده‌ست ❤️‍🔥</h1>
 
 <p>
-یه تاریخ و ساعت خوب انتخاب کن
+${selectedDate}<br>
+ساعت ${selectedTime}<br><br>
+برای ${selectedFood}
 </p>
 
-
-<input 
-type="date" 
-id="dateInput"
-style="
-padding:12px;
-border-radius:20px;
-border:1px solid #ddd;
-width:90%;
-">
-
-
-<br><br>
-
-
-<input 
-type="time" 
-id="timeInput"
-style="
-padding:12px;
-border-radius:20px;
-border:1px solid #ddd;
-width:90%;
-">
-
-
-<p style="font-size:13px;color:#999">
-
-جز پنجشنبه و جمعه 💗
-
-</p>
-
-
-<button onclick="checkDate()">
-
-ادامه 💝
-
+<button onclick="confirmDate()">
+ثبت قرار ❤️‍🔥
 </button>
 
 `;
 
 }
 
+function confirmDate(){
 
+fetch(scriptURL,{
+method:"POST",
+body:JSON.stringify({
 
+date:selectedDate,
+time:selectedTime,
+food:selectedFood
 
-function checkDate(){
+})
+})
+.then(()=>{
 
+hearts();
 
-let d=new Date(
-document.getElementById("dateInput").value
-);
+document.getElementById("page").innerHTML=`
 
-
-selectedDate=
-document.getElementById("dateInput").value;
-
-
-selectedTime=
-document.getElementById("timeInput").value;
-
-
-
-if(!selectedDate || !selectedTime){
-
-alert("اول تاریخ و ساعت رو انتخاب کن 💗");
-
-return;
-
-}
-
-
-
-let day=d.getDay();
-
-
-
-if(day===4 || day===5){
-
-
-document.getElementById("page").innerHTML=
-
-`
-
-<h1>
-یه بوس میدم بخاطر عذرخواهی 😘
+<h1 style="color:#a83262">
+ثبت شد ❤️‍🔥
 </h1>
 
+<p>
+قرارمون ثبت شد 💗<br>
+منتظرت می‌مونم 🍷
+</p>
 
-<div style="font-size:80px">
-
-💋
-
-</div>
-
-
-`;
-
-
-
-heartPop("💖");
-
-
-setTimeout(()=>{
-
-
-document.getElementById("page").innerHTML=
-
-`
-
-<h1>
-
-جز پنجشنبه و جمعه 💖
-
-</h1>
-
-
-<button onclick="datePage()">
-
-انتخاب دوباره
-
+<button onclick="story()">
+داستانمون 🥀
 </button>
 
 `;
-
-
-},2200);
-
-
-
-return;
-
-
-}
-
-
-
-foodPage();
-
-
-}
-
-
-
-
-
-function foodPage(){
-
-
-document.getElementById("page").innerHTML=
-
-`
-
-<h1>
-پرنسس شکمو چی دوسداره؟ 👑
-</h1>
-
-
-<div class="plate">
-
-🍽️
-
-</div>
-
-
-<p style="font-size:13px;color:#999">
-
-یه چیز خوشمزه انتخاب کن
-
-</p>
-
-
-
-<div class="foods">
-
-
-<div class="food" onclick="chooseFood('همبرگور 🍔')">
-
-همبرگور 🍔
-
-</div>
-
-
-<div class="food" onclick="chooseFood('جیگر 🍢')">
-
-جیگر 🍢
-
-</div>
-
-
-<div class="food" onclick="chooseFood('پیتزا 🍕')">
-
-پیتزا 🍕
-
-</div>
-
-
-<div class="food" onclick="chooseFood('قهوه ☕')">
-
-قهوه ☕
-
-</div>
-
-
-</div>
-
-
-`;
-
-}
-
-
-
-function chooseFood(food){
-
-
-selectedFood=food;
-
-
-document.querySelectorAll(".food")
-.forEach(x=>{
-
-x.classList.remove("active");
 
 });
 
-
-event.currentTarget.classList.add("active");
-
-
-heartPop("💖");
-
-
-setTimeout(()=>{
-
-finalPage();
-
-},1800);
-
-
 }
 
 
 
-</script>
+function story(){
 
+hearts();
 
-<style>
+document.getElementById("page").innerHTML=`
 
-
-.plate{
-
-font-size:90px;
-
-animation:rotate 3s linear infinite;
-
-}
-
-
-
-@keyframes rotate{
-
-from{
-
-transform:rotate(0deg);
-
-}
-
-to{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-
-
-.foods{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:15px;
-
-}
-
-
-
-.food{
-
-background:
-
-rgba(150,20,70,.15);
-
-padding:20px;
-
-border-radius:25px;
-
-font-size:18px;
-
-cursor:pointer;
-
-transition:.5s;
-
-}
-
-
-
-.food:hover{
-
-transform:translateY(-8px) scale(1.08);
-
-}
-
-
-
-.food.active{
-
-transform:scale(1.2);
-
-background:
-
-rgba(150,20,70,.35);
-
-}
-
-
-</style>
-<script>
-
-
-function finalPage(){
-
-
-document.getElementById("page").innerHTML=
-
-`
-
-<h1 style="font-size:24px;color:#8b1648">
-
-خوشحالم نگفتی نه 🫂🫀
-
+<h1>
+داستانمون ❤️
 </h1>
 
-
-<p style="
-font-size:17px;
-color:#8b1648;
-font-weight:bold;
-">
-
-${selectedDate}
-
-<br>
-
-ساعت ${selectedTime}
-
+<p>
+از یه قرار ساده شروع شد...
 <br><br>
-
-میام دنبالت، برای ${selectedFood}
-
+ولی شاید یکی از قشنگ‌ترین خاطره‌هامون بشه ❤️‍🔥
 </p>
-
-
-<p style="
-font-size:16px;
-color:#777;
-">
-
-پس آماده باش، خودم میام دنبالت 🚗🍷
-
-</p>
-
-
-<p style="
-font-size:13px;
-color:#aaa;
-">
-
-برای درخواست از زیباترین دختر دنیا یه وبسایت طراحی کردم 👀💄
-
-</p>
-
-
-<button onclick="confirmDate()"
-style="
-font-size:18px;
-background:#951c50;
-color:white;
-">
-
-ثبت قرار ❤️‍🔥
-
-</button>
-
-
-<br>
-
-
-<button onclick="lastLove()"
-style="
-font-size:30px;
-background:#951c50;
-color:white;
-">
-
-❤️
-
-</button>
-
 
 `;
 
 }
-
-async function confirmDate(){
-  await fetch("https://script.google.com/macros/s/AKfycbyC8iNDuTp_NWPh2P01qJodtmMuKZX785S5Ch8sKfWNAGR0qUuhgxtPsTHBvQ56hJHO/exec", {
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      date:selectedDate,
-      time:selectedTime,
-      food:selectedFood
-    })
-  });
-  document.getElementById("page").innerHTML = `
-    <div class="card final-card">
-      <h1 style="color:#8b1648">ثبت شد ❤️‍🔥</h1>
-      <p>منتظر باش، قرارمون ثبت شد 💗</p>
-    </div>
-  `;
-}
-function lastLove(){
-
-
-for(let i=0;i<120;i++){
-
-
-let h=document.createElement("div");
-
-
-h.className="heartPop";
-
-
-let hearts=[
-
-"💖",
-"💝",
-"💕",
-"💗"
-
-];
-
-
-h.innerHTML=
-hearts[
-Math.floor(Math.random()*hearts.length)
-];
-
-
-
-h.style.left="50%";
-
-h.style.top="50%";
-
-
-
-h.style.setProperty(
-"--x",
-(Math.random()*1000-500)+"px"
-);
-
-
-h.style.setProperty(
-"--y",
-(Math.random()*1000-500)+"px"
-);
-
-
-
-document.body.appendChild(h);
-
-
-
-setTimeout(()=>{
-
-h.remove();
-
-},1700);
-
-
-
-}
-
-
-
-setTimeout(()=>{
-
-
-document.getElementById("page").innerHTML=
-
-`
-
-<h1 style="
-font-size:26px;
-color:#8b1648;
-">
-
-
-💗
-
-
-</h1>
-
-
-<p style="
-font-size:24px;
-color:#8b1648;
-font-weight:bold;
-">
-
-
-حیف داستانمون بود که انقدر بی سرو ته تموم شه
-
-
-</p>
-
-
-`;
-
-
-
-},1800);
-
-
-
-}
-
-
-
 </script>
-
 
 </body>
-
 </html>
