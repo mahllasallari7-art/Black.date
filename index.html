@@ -947,25 +947,11 @@ const message = `
 🍽️ غذا: ${selectedFood}
 `;
 
-const url = "https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY/sendMessage";
+const url =
+"https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY/sendMessage?chat_id=7986361059&text="
++ encodeURIComponent(message);
 
-fetch(url, {
-  method: "POST",
-  mode: "no-cors",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    chat_id: "7986361059",
-    text: message
-  })
-})
-.then(() => {
-  alert("قرار ثبت شد ❤️‍🔥");
-})
-.catch(() => {
-  alert("مشکل در ارسال پیام ❌");
-});
+window.location.href = url;
 
 }
 </script>
