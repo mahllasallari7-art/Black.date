@@ -927,7 +927,7 @@ font-weight:bold;
 
 
 function sendTelegram(){
-alert("تلگرام اجرا شد");
+
 const message = `
 ❤️‍🔥 قرار جدید
 
@@ -947,9 +947,21 @@ body:JSON.stringify({
 chat_id:"7986361059",
 text:message
 })
+})
+.then(res => res.json())
+.then(data => {
+
+alert(JSON.stringify(data));
+
+})
+.catch(err => {
+
+alert("خطا: " + err);
+
 });
 
 }
+
 </script>
 
 
