@@ -938,26 +938,16 @@ const message = `
 🍽️ غذا: ${selectedFood}
 `;
 
-fetch(`https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY/sendMessage`, {
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-chat_id:"7986361059",
-text:message
-})
-})
+fetch("https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7Bzg7XYwA9iyEYzo/sendMessage?chat_id=7986361059&text=" + encodeURIComponent(message))
+
 .then(res => res.json())
+
 .then(data => {
-
 alert(JSON.stringify(data));
-
 })
+
 .catch(err => {
-
 alert("خطا: " + err);
-
 });
 
 }
