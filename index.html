@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>یک قرار خاص ❤️</title>
+<title>یک قرار خاص 💗</title>
+
 
 <style>
 
@@ -13,56 +15,78 @@
 box-sizing:border-box;
 }
 
+
 body{
+
 margin:0;
+
 min-height:100vh;
+
 display:flex;
-justify-content:center;
+
 align-items:center;
-font-family:tahoma, sans-serif;
+
+justify-content:center;
+
+font-family:tahoma;
 
 background:
-linear-gradient(rgba(70,0,25,.85),rgba(20,0,10,.95)),
-url("photo.jpg");
 
-background-size:cover;
-background-position:center;
+linear-gradient(
+rgba(90,0,45,.9),
+rgba(40,0,25,.95)
+);
 
-color:white;
 overflow:hidden;
+
 }
+
 
 
 .box{
 
 width:90%;
+
 max-width:430px;
 
 padding:35px;
 
-background:rgba(65,0,25,.88);
+text-align:center;
+
+background:
+
+rgba(255,255,255,.88);
 
 border-radius:35px;
 
-text-align:center;
+box-shadow:
 
-box-shadow:0 0 45px #000;
+0 15px 50px rgba(0,0,0,.4);
+
+color:#5a0030;
 
 animation:show 1s;
 
 }
 
 
+
 @keyframes show{
 
 from{
+
 opacity:0;
-transform:translateY(30px);
+
+transform:translateY(40px);
+
 }
 
 to{
+
 opacity:1;
+
 transform:translateY(0);
+
 }
 
 }
@@ -70,14 +94,17 @@ transform:translateY(0);
 
 
 h1{
-font-size:30px;
-color:#ffd6df;
+
+color:#98004b;
+
 }
+
 
 
 p{
 
 font-size:19px;
+
 line-height:2;
 
 }
@@ -86,7 +113,8 @@ line-height:2;
 
 button{
 
-border:0;
+border:none;
+
 border-radius:40px;
 
 padding:15px 30px;
@@ -97,7 +125,7 @@ font-size:18px;
 
 cursor:pointer;
 
-transition:.3s;
+transition:.4s;
 
 }
 
@@ -105,7 +133,7 @@ transition:.3s;
 
 #yes{
 
-background:#b00040;
+background:#a80055;
 
 color:white;
 
@@ -115,72 +143,106 @@ color:white;
 
 #no{
 
-background:#444;
+background:#eee;
 
-color:white;
+color:#800040;
 
 }
 
 
 
-.heart{
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+
+.floatHeart{
 
 position:absolute;
 
 font-size:25px;
 
-animation:move 8s linear infinite;
-
-opacity:.5;
+animation:float 8s infinite linear;
 
 }
 
 
-@keyframes move{
+
+@keyframes float{
+
+from{
+
+transform:translateY(100vh);
+
+}
+
+to{
+
+transform:translateY(-20vh);
+
+}
+
+}
+
+
+
+.burst{
+
+position:fixed;
+
+font-size:30px;
+
+z-index:10;
+
+animation:explode 1.5s forwards;
+
+}
+
+
+
+@keyframes explode{
+
 
 0%{
-transform:translateY(100vh);
+
+transform:translate(0,0) scale(.2);
+
+opacity:1;
+
 }
+
 
 100%{
-transform:translateY(-20vh);
-}
+
+transform:translate(var(--x),var(--y)) scale(1.5);
+
+opacity:0;
 
 }
 
 
+}
 
-input, select{
+
+
+input{
 
 width:90%;
 
 padding:12px;
 
+margin:8px;
+
 border-radius:20px;
 
-border:none;
-
-margin:8px;
+border:1px solid #ddd;
 
 font-size:16px;
 
 }
-
-
-.option{
-
-background:#80002f;
-
-padding:15px;
-
-border-radius:20px;
-
-margin:10px;
-
-cursor:pointer;
-
-}
-
 
 
 </style>
@@ -191,14 +253,11 @@ cursor:pointer;
 <body>
 
 
-<div class="heart" style="left:10%">❤️</div>
-<div class="heart" style="left:40%;animation-delay:2s">❤️</div>
-<div class="heart" style="left:70%;animation-delay:4s">❤️</div>
+<div class="floatHeart" style="left:10%">💗</div>
 
+<div class="floatHeart" style="left:45%;animation-delay:2s">💗</div>
 
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
+<div class="floatHeart" style="left:75%;animation-delay:4s">💗</div>
 
 
 
@@ -206,15 +265,11 @@ cursor:pointer;
 
 
 <h1>
-افرودیت زیبای من ❤️
+افرودیت زیبای من 💗
 </h1>
 
 
-<p id="text">
-
-یه سوال مهم دارم ازت...
-
-<br>
+<p id="message">
 
 با من میای سر یه دیت خاص؟ ✨
 
@@ -222,12 +277,16 @@ cursor:pointer;
 
 
 <button id="yes" onclick="yesClick()">
+
 آره 😍
+
 </button>
 
 
 <button id="no" onclick="noClick()">
+
 نه
+
 </button>
 
 
@@ -245,81 +304,145 @@ let noCount=0;
 
 function noClick(){
 
+
 noCount++;
 
-let messages=[
 
-"مطمئنی؟ یه بار دیگه فکر کن... ❤️",
+let texts=[
 
-"شاید این همون قراری باشه که بعداً بابتش خوشحال بشی 😌",
+"مطمئنی؟ یه بار دیگه فکر کن 💗",
 
-"هنوز فرصت داری انتخاب قشنگ‌تری کنی ✨",
+"شاید این همون قراری باشه که بعداً خوشحالت کنه 😌",
 
-"فکر کنم جواب واقعیت یه چیز دیگه‌ست 😄"
+"هنوز می‌تونی انتخاب قشنگ‌تری داشته باشی ✨",
+
+"فکر کنم جواب واقعیت رو خودت می‌دونی 💗"
 
 ];
 
 
-document.getElementById("text").innerHTML=
-messages[Math.min(noCount-1,3)];
+document.getElementById("message").innerHTML=
+
+texts[Math.min(noCount-1,3)];
 
 
 yesSize+=12;
 
+
 document.getElementById("yes").style.fontSize=
+
 yesSize+"px";
+
 
 }
 
 
 
+
+function heartExplosion(){
+
+
+for(let i=0;i<50;i++){
+
+
+let h=document.createElement("div");
+
+
+h.className="burst";
+
+h.innerHTML="💗";
+
+
+h.style.left="50%";
+
+h.style.top="50%";
+
+
+h.style.setProperty(
+"--x",
+(Math.random()*600-300)+"px"
+);
+
+
+h.style.setProperty(
+"--y",
+(Math.random()*600-300)+"px"
+);
+
+
+document.body.appendChild(h);
+
+
+
+setTimeout(()=>{
+
+h.remove();
+
+},1600);
+
+
+
+}
+
+
+}
+
+
+
+
 function yesClick(){
 
-document.getElementById("music").play().catch(()=>{});
+
+heartExplosion();
+
+
+setTimeout(()=>{
 
 
 document.getElementById("box").innerHTML=
 
+
 `
 
 <h1>
-انتخاب قشنگی کردی ❤️
+انتخاب قشنگی کردی 💗
 </h1>
 
 
 <p>
-
-می‌دونستم تصمیم درستی می‌گیری.
-
-<br>
-
 حالا بریم قرارمون رو بسازیم ✨
-
 </p>
 
 
 <button onclick="showDate()">
 
-انتخاب تاریخ و ساعت 📅
+انتخاب تاریخ 📅
 
 </button>
 
 
 `;
 
+
+},1600);
+
+
 }
 
 
 
 </script>
-<script>
+  <script>
 
-let selectedDate="";
-let selectedTime="";
-let selectedFood="";
+
+let dateSelected="";
+let timeSelected="";
+let foodSelected="";
+
 
 
 function showDate(){
+
 
 document.getElementById("box").innerHTML=
 
@@ -331,23 +454,19 @@ document.getElementById("box").innerHTML=
 
 
 <p>
-یه تاریخ و ساعت خوب انتخاب کن ❤️
+یه تاریخ و ساعت خوب انتخاب کن 💗
 </p>
 
 
-<input type="date" id="date">
+<input type="date" id="dateInput">
 
 
-<br>
-
-<input type="time" id="time">
+<input type="time" id="timeInput">
 
 
-<p style="font-size:14px">
+<p style="font-size:14px;color:#8b0038">
 
-یه خواهش کوچولو ✨
-<br>
-لطفاً پنج‌شنبه و جمعه رو انتخاب نکن
+لطفاً پنج‌شنبه و جمعه رو انتخاب نکن ✨
 
 </p>
 
@@ -358,54 +477,43 @@ document.getElementById("box").innerHTML=
 
 </button>
 
-
 `;
 
 }
 
 
 
+
 function saveDate(){
 
-let date=document.getElementById("date").value;
 
-let time=document.getElementById("time").value;
-
-
-if(!date || !time){
-
-alert("اول تاریخ و ساعت رو انتخاب کن ❤️");
-
-return;
-
-}
+dateSelected=
+document.getElementById("dateInput").value;
 
 
-let day=new Date(date).getDay();
+timeSelected=
+document.getElementById("timeInput").value;
 
 
-if(day==4 || day==5){
 
-alert("یه روز دیگه انتخاب کن، پنج‌شنبه و جمعه نه 😄");
+if(!dateSelected || !timeSelected){
+
+alert("اول تاریخ و ساعت رو انتخاب کن 💗");
 
 return;
 
 }
 
 
-selectedDate=date;
-
-selectedTime=time;
-
-
-showFood();
+foodPage();
 
 
 }
 
 
 
-function showFood(){
+
+function foodPage(){
 
 
 document.getElementById("box").innerHTML=
@@ -413,41 +521,54 @@ document.getElementById("box").innerHTML=
 `
 
 <h1>
-خب حالا انتخاب با توئه ❤️
+حالا انتخاب با توئه 💗
 </h1>
 
 
+<div class="plate">
+
+🍽️
+
+</div>
+
+
 <p>
-دوست داری مهمون چی بشی؟ ✨
+چی دوست داری مهمونت کنم؟ ✨
 </p>
 
 
-<div class="option" onclick="chooseFood('همبرگر معروف')">
+
+<div class="food" onclick="chooseFood('همبرگر معروف')">
 
 🍔 همبرگر معروف
 
 </div>
 
 
-<div class="option" onclick="chooseFood('جیگر طرقبه')">
+<div class="food" onclick="chooseFood('جیگر طرقبه')">
 
 🥩 جیگر طرقبه
 
 </div>
 
 
-<div class="option" onclick="chooseFood('پیتزا آفتابگردون')">
+<div class="food" onclick="chooseFood('پیتزا آفتابگردون')">
 
-🍕 پیتزا آفتابگردون
+🍕
+
+پیتزا آفتابگردون
+
+</div>
+
+
+<div class="food" onclick="chooseFood('قهوه کافه')">
+
+☕
+
+قهوه (کافه)
 
 </div>
 
-
-<div class="option" onclick="chooseFood('قهوه کافه')">
-
-☕ قهوه (کافه)
-
-</div>
 
 
 `;
@@ -460,10 +581,25 @@ document.getElementById("box").innerHTML=
 function chooseFood(food){
 
 
-selectedFood=food;
+foodSelected=food;
 
+
+document.querySelectorAll(".food").forEach(item=>{
+
+item.style.transform="scale(.9)";
+
+});
+
+
+event.target.style.transform="scale(1.15)";
+
+
+setTimeout(()=>{
 
 finalPage();
+
+},800);
+
 
 
 }
@@ -471,12 +607,118 @@ finalPage();
 
 
 </script>
-<script>
+
+
+
+<style>
+
+
+.plate{
+
+
+font-size:80px;
+
+animation:rotatePlate 3s infinite linear;
+
+}
+
+
+
+@keyframes rotatePlate{
+
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+
+}
+
+
+
+.food{
+
+
+background:
+
+rgba(150,0,70,.15);
+
+
+padding:15px;
+
+
+margin:12px;
+
+
+border-radius:25px;
+
+
+cursor:pointer;
+
+
+transition:.4s;
+
+
+animation:appear .7s;
+
+
+}
+
+
+
+.food:hover{
+
+
+transform:scale(1.1);
+
+
+background:
+
+rgba(150,0,70,.3);
+
+
+}
+
+
+
+@keyframes appear{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+</style>
+  <script>
+
 
 function finalPage(){
-
-
-let niceDate = new Date(selectedDate).toLocaleDateString("en-US");
 
 
 document.getElementById("box").innerHTML=
@@ -484,38 +726,135 @@ document.getElementById("box").innerHTML=
 `
 
 <h1>
-رئیس عصبانی 😌🔥
+رئیس عصبانی 😌💗
 </h1>
 
 
 <p>
 
-قرارمون ثبت شد ❤️
+
+خوشحالم نگفتی نه! 💗
+
 
 <br><br>
 
 
-📅 تاریخ: ${niceDate}
+پس تاریخ ${dateSelected}
 
 <br>
 
-⏰ ساعت: ${selectedTime}
+ساعت ${timeSelected}
 
 
 <br><br>
 
 
-🚗 آماده باش، همون موقع میام دنبالت.
+میام دنبالت، برای ${foodSelected} 🥂
 
 
 <br><br>
 
 
-امیدوارم این قرار، شروع یک خاطره‌ی قشنگ باشه ❤️
+پس آماده باش، خودم میام دنبالت 🚗💨
 
 
 <br><br>
 
+
+برای درخواست از زیباترین دختر دنیا، یه سایت کوچولو طراحی کردم ❤️
+
+
+</p>
+
+
+<button onclick="lastExplosion()">
+
+ادامه 💗
+
+</button>
+
+
+`;
+
+}
+
+
+
+
+function lastExplosion(){
+
+
+for(let i=0;i<70;i++){
+
+
+let h=document.createElement("div");
+
+
+h.innerHTML="💗";
+
+
+h.style.position="fixed";
+
+h.style.left="50%";
+
+h.style.top="50%";
+
+h.style.fontSize=
+(20+Math.random()*30)+"px";
+
+
+h.style.transition="2s";
+
+
+document.body.appendChild(h);
+
+
+
+setTimeout(()=>{
+
+
+h.style.transform=
+
+`
+translate(
+${Math.random()*900-450}px,
+${Math.random()*900-450}px
+)
+scale(1.5)
+`;
+
+h.style.opacity="0";
+
+
+},50);
+
+
+
+setTimeout(()=>{
+
+h.remove();
+
+},2200);
+
+
+
+}
+
+
+
+setTimeout(()=>{
+
+
+document.getElementById("box").innerHTML=
+
+`
+
+<h1>
+💗
+</h1>
+
+
+<p style="font-size:24px">
 
 حیف داستانمون بود که انقدر بی‌سر و ته تموم شه!
 
@@ -525,51 +864,15 @@ document.getElementById("box").innerHTML=
 `;
 
 
-
-sendToTelegram();
-
-}
-
-
-
-
-function sendToTelegram(){
-
-
-/*
-
-اینجا بعداً اطلاعات تلگرام وصل میشه
-
-تاریخ:
-selectedDate
-
-ساعت:
-selectedTime
-
-غذا:
-selectedFood
-
-*/
-
-
-console.log(
-
-"Date:",
-selectedDate,
-
-"Time:",
-selectedTime,
-
-"Food:",
-selectedFood
-
-);
+},2200);
 
 
 }
+
 
 
 </script>
+
 
 
 </body>
