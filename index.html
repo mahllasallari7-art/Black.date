@@ -947,19 +947,37 @@ const message = `
 🍽️ غذا: ${selectedFood}
 `;
 
-fetch("https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY/sendMessage?chat_id=7986361059&text=" + encodeURIComponent(message))
+const url =
+"https://api.telegram.org/bot8718059967:AAHIXZeQD8lBPbvFMO7BzgFpp0JrDP0S6jY/sendMessage";
 
-.then(res => res.json())
 
-.then(data => {
+fetch(url,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+chat_id:"7986361059",
+text:message
+})
+})
+.then(response=>response.json())
+.then(data=>{
 
-alert(JSON.stringify(data));
+if(data.ok){
+
+alert("قرار ثبت شد ❤️‍🔥");
+
+}else{
+
+alert("خطای تلگرام: "+data.description);
+
+}
 
 })
+.catch(error=>{
 
-.catch(err => {
-
-alert("خطا: " + err);
+alert("خطای اتصال: "+error.message);
 
 });
 
