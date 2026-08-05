@@ -387,9 +387,68 @@ datePage();
 let selectedDate="";
 let selectedTime="";
 let selectedFood="";
+let selectedSpecial="";
 
 
+function favoritePage(){
 
+document.getElementById("page").innerHTML = `
+
+<h1 style="color:#8b1648">
+خانوم نیلاب کدومو میخواد؟ 💖
+</h1>
+
+<div class="foods">
+
+<div class="food" onclick="chooseSpecial('🌸 گل',['🌸','💐','🌺','🌷','🌻'])">
+🌸 گل
+</div>
+
+<div class="food" onclick="chooseSpecial('🎁 سوپرایز کوچولو',['🎁','🛍️','🎀','🎉'])">
+🎁 سوپرایز کوچولو
+</div>
+
+<div class="food" onclick="chooseSpecial('🍬 خوراکی و تنقلات',['🍬','🍭','🍫','🧁','🍪','🍿'])">
+🍬 خوراکی و تنقلات
+</div>
+
+<div class="food" onclick="chooseSpecial('💌 کار دست‌ساز',['💌','🔖','💕','📜'])">
+💌 کار دست‌ساز
+</div>
+
+</div>
+
+`;
+}
+
+
+function chooseSpecial(value, emojis){
+
+selectedSpecial = value;
+
+for(let i=0;i<80;i++){
+
+let h = document.createElement("div");
+
+h.className = "heartPop";
+
+h.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+h.style.left = "50%";
+h.style.top = "50%";
+
+h.style.setProperty("--x", (Math.random()*1200-600)+"px");
+h.style.setProperty("--y", (Math.random()*1200-600)+"px");
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),1800);
+}
+
+setTimeout(()=>{
+datePage();
+},1500);
+}
 function datePage(){
 
 
@@ -940,7 +999,8 @@ function sendTelegram(){
 const data = {
   date: selectedDate,
   time: selectedTime,
-  food: selectedFood
+  food: selectedFood,
+  special: selectedspecial,
 };
 
 // ارسال به Google Apps Script
